@@ -123,24 +123,29 @@
     </div>
 
     <script>
-        function openCard() {
-            document.getElementById('birthdayCard').classList.add('open');
-            createFloatingElements('flowers', 30);
-            createFloatingElements('hearts', 20);
-            createFloatingElements('stars', 15);
-        }
-        function createFloatingElements(className, count) {
-            const container = document.getElementById('floatingElements');
-            const containerRect = container.getBoundingClientRect();
-            for (let i = 0; i < count; i++) {
-                let element = document.createElement('div');
-                element.classList.add(className);
-                element.style.left = Math.random() * containerRect.width + 'px';
-                element.style.top = containerRect.height + 'px';
-                container.appendChild(element);
-                setTimeout(() => element.remove(), 2000);
+        window.onload = function() {
+            function openCard() {
+                document.getElementById('birthdayCard').classList.add('open');
+                createFloatingElements('flowers', 30);
+                createFloatingElements('hearts', 20);
+                createFloatingElements('stars', 15);
             }
-        }
+
+            function createFloatingElements(className, count) {
+                const container = document.getElementById('floatingElements');
+                const containerRect = container.getBoundingClientRect();
+                for (let i = 0; i < count; i++) {
+                    let element = document.createElement('div');
+                    element.classList.add(className);
+                    element.style.left = Math.random() * containerRect.width + 'px';
+                    element.style.top = containerRect.height + 'px';
+                    container.appendChild(element);
+                    setTimeout(() => element.remove(), 2000);
+                }
+            }
+
+            document.querySelector('.front').addEventListener('click', openCard);
+        };
     </script>
 </body>
 </html>
